@@ -1,0 +1,23 @@
+.header{
+    background-color: rgb(27, 51, 60);
+}
+
+
+
+.iconbars{
+    font-size:30px;
+}
+.input{
+    width: 30%;
+}
+
+.badgea{
+    position: relative;
+} 
+.badge{
+    position: absolute;
+    text-align: center;
+    top:-12px;
+    right:-14px;
+    font-size: 13px; 
+   }

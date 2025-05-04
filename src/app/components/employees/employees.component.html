@@ -1,0 +1,109 @@
+<div class="container m-2 ">
+    <div class="d-flex w-100 py-3">
+    <h2 class=" ">Lesson Live</h2>
+    <div class="ms-auto d-flex pt-2">
+     <div class="rounded-3 p-2 me-2  bg-secondary"><i class="fa-solid fa-magnifying-glass"></i></div>   
+    <button type="button" class="btn btncreate flex-grow-1" data-bs-toggle="modal" data-bs-target="#myModal">Create Lesson Live</button>
+    
+
+    <div class="modal" id="myModal">
+        <div class="modal-dialog modal-lg"> <!-- make modal wider -->
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Create Lesson Live</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+      
+            <!-- Modal Body -->
+            <div class="modal-body bg-light rounded-4 p-4">
+              <form>
+                <div class="row">
+                  <!-- Classroom -->
+                  <div class="col-md-6 mb-3">
+                    <label for="classroom" class="form-label">Classroom</label>
+                    <select id="classroom" class="form-select" required [(ngModel)]="newLesson.classroom" name="classroom">
+                      <option value="" disabled selected>Choose</option>
+                      <option *ngFor="let room of classrooms" [value]="room">{{ room }}</option>
+                    </select>
+                  </div>
+      
+                  <!-- Weekday -->
+                  <div class="col-md-6 mb-3">
+                    <label for="weekday" class="form-label">Weekday</label>
+                    <select id="weekday" class="form-select" required [(ngModel)]="newLesson.weekday" name="weekday">
+                      <option value="" disabled selected>Choose</option>
+                      <option *ngFor="let day of weekdays" [value]="day">{{ day }}</option>
+                    </select>
+                  </div>
+                </div>
+      
+                <div class="row">
+                  <!-- Subject -->
+                  <div class="col-md-6 mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <select id="subject" class="form-select" required [(ngModel)]="newLesson.subject" name="subject">
+                      <option value="" disabled selected>Choose</option>
+                      <option *ngFor="let subject of subjects" [value]="subject">{{ subject }}</option>
+                    </select>
+                  </div>
+      
+                  <!-- Period -->
+                  <div class="col-md-6 mb-3">
+                    <label for="period" class="form-label">Period</label>
+                    <input type="text" id="period" class="form-control" placeholder="Enter" required [(ngModel)]="newLesson.period" name="period"/>
+                  </div>
+
+
+                  <div class="col-md-12 mb-3">
+                    <label for="Live-link" class="form-label">Live link</label>
+                    <input type="text" id="Live-link" class="form-control" placeholder="Choose" required [(ngModel)]="newLesson.live" name="live"/>
+                  </div>
+                   
+                  <div class="col-md-12 mb-3">
+                    <label for="Record-link" class="form-label">Record link</label>
+                    <input type="text" id="Record-link" class="form-control" placeholder="Choose" required [(ngModel)]="newLesson.record" name="record"/>
+                  </div>
+
+                </div>
+      
+                <div class="text-end">
+                  <button type="submit" class="btn btncreate" (click)="addLesson()">Create</button>
+                </div>
+              </form>
+             
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
+
+
+
+
+</div></div>
+    <div class="card rounded-4 overflow-hidden">
+    <table class="table table-bordered h-100 mx-auto table-striped">
+      <thead class="table-secondary">
+        <tr>
+          <th class="px-5  py-2">Classroom</th>
+          <th class="px-5  py-2">Weekday</th>
+          <th class="px-5  py-2">Period</th>
+          <th class="px-5  py-2">Subject</th> 
+          <th class="px-5  py-2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let lesson of lessons; let i = index">
+            <td class="px-5  py-2">{{ lesson.classroom }}</td>
+            <td class="px-5  py-2">{{ lesson.weekday }}</td>
+            <td class="px-5  py-2">{{ lesson.period }}</td>
+            <td class="px-5  py-2">{{ lesson.subject }}</td> 
+            <td class="px-5  py-2"><i class="fa-solid fa-trash m-2" (click)="deleteLesson(i)"></i><i class="fa-solid fa-pen m-2" (click)="editLesson(i)"></i></td>
+          </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>

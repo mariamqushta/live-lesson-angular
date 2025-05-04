@@ -1,0 +1,65 @@
+<div class=" h-100 m-2 rounded-3 leftsec min-vh-100   px-5">
+
+    <div class="leftsec spann text-secondary pt-4 my-2 d-flex ">
+        <i class="fas fa-chevron-left  py-auto" ></i>
+        <span class="h5 py-auto mx-auto">Lookscout Dashboard</span>
+        
+    </div>
+
+
+    <div class="input d-flex  rounded-2  w-100 my-2 leftsec">
+        <div class="rounded-start p-2 text-secondary  bg-dark">
+            <i class="fa-solid fa-magnifying-glass"></i></div>
+        <input class=" rounded-end pe-5 py-2 me-2 bg-dark text-secondary border border-0" type="text" placeholder="Search">
+    </div>
+
+
+     
+    <h5 class="text-white">MAIN MENU</h5>
+    <div id="accordion" *ngFor="let item of element; let i = index">
+      <div
+        class="card leftsec menu text-secondary border-0 w-100"
+        [ngClass]="{ 'active-menu': activeIndex === i }"
+      >
+        <div
+          class="card-header spantitle d-flex justify-content-between"
+          [ngClass]="{ 'active-title': activeIndex === i }"
+        >
+          <span class="h5"><i class="{{ item.icon }}"></i>{{ item.title }}</span>
+          <a
+            class="btn float-end"
+            (click)="toggleMenu(i)"
+            role="button"
+          >
+            <i class="fas fa-chevron-down text-secondary"></i>
+          </a>
+        </div>
+    
+        <!-- COLLAPSE SECTION -->
+        <div
+        [id]="'collapse' + item.btn"
+        class="custom-collapse"
+        [ngClass]="{ 'open': activeIndex === i }"
+      >
+          <div
+            class="card-body ms-4 submenu"
+            *ngFor="let item2 of item.title2"
+          >
+            <p class="text-white">{{ item2.title1 }}</p>
+            <div
+              class="spann text-secondary my-2 d-flex justify-content-between"
+              *ngFor="let item3 of item2.list"
+            >
+              <span class="h5 py-auto me-3">{{ item3 }}</span>
+              <i class="fas fa-chevron-right py-auto"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+
+</div>

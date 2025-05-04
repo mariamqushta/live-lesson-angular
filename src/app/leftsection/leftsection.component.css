@@ -1,0 +1,40 @@
+.leftsec{
+    background-color: rgb(27, 51, 60);
+}.spann{
+    text-align: center;
+}
+/* .spantitle:hover{
+    color: white;
+}
+.menu:hover{
+    background-color:rgb(62, 97, 105);
+}.submenu:hover{
+    background-color:rgb(62, 97, 105);
+} */
+.active-menu {
+    background-color: rgb(62, 97, 105);
+    border-left:3px solid  white !important;
+  }
+  
+  .active-title {
+    color: white;
+  }
+  
+  .active-submenu {
+    background-color: rgb(62, 97, 105);
+  }
+
+  .custom-collapse {
+    max-height: 0;           
+    opacity: 0;              
+    overflow: hidden;    
+    transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
+  }
+  
+  .custom-collapse.open {
+    max-height: 1000px;     
+    opacity: 1;            
+  }
+  
+ 
+  
