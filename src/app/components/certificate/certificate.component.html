@@ -1,0 +1,143 @@
+<div class="container mx-auto " >
+    <h2 class="py-3">Certificate</h2>
+
+    <div class="d-flex row">
+
+        <!-- School -->
+        <div class="col-md-4 mb-4">
+          <label for="school" class="form-label">School</label>
+          <select id="school" class="form-select" name="school" [(ngModel)]="newData.selectedSchool">
+            <option value="" disabled>Choose</option>
+            <option *ngFor="let school of schools" [value]="school">{{ school }}</option>
+          </select>
+        </div>
+      
+        <!-- Academic Year -->
+        <div class="col-md-4 mb-4">
+          <label for="academicYear" class="form-label">Academic Year</label>
+          <select id="academicYear" class="form-select" name="academicYear" [(ngModel)]="newData.selectedAcademicYear">
+            <option value="" disabled>Choose</option>
+            <option *ngFor="let year of academicYears" [value]="year">{{ year }}</option>
+          </select>
+        </div>
+      
+        <!-- Semester -->
+        <div class="col-md-4 mb-4">
+          <label for="semester" class="form-label">Semester</label>
+          <select id="semester" class="form-select" name="semester" [(ngModel)]="newData.selectedSemester">
+            <option value="" disabled>Choose</option>
+            <option *ngFor="let semester of semesters" [value]="semester">{{ semester }}</option>
+          </select>
+        </div>
+      
+        <!-- Month -->
+        <div class="col-md-4 mb-4">
+          <label for="month" class="form-label">Month</label>
+          <select id="month" class="form-select" name="month" [(ngModel)]="newData.selectedMonth">
+            <option value="" disabled>Choose</option>
+            <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+          </select>
+        </div>
+      
+        <!-- Classroom -->
+        <div class="col-md-4 mb-4">
+          <label for="classroom" class="form-label">Classroom</label>
+          <select id="classroom" class="form-select" name="classroom" [(ngModel)]="newData.selectedClassroom">
+            <option value="" disabled>Choose</option>
+            <option *ngFor="let room of classrooms" [value]="room">{{ room }}</option>
+          </select>
+        </div>
+      
+        <!-- Student -->
+        <div class="col-md-4 mb-4">
+          <label for="student" class="form-label">Student</label>
+          <select id="student" class="form-select" name="student" [(ngModel)]="newData.selectedStudent">
+            <option value="" disabled>Choose</option>
+            <option *ngFor="let student of students" [value]="student">{{ student }}</option>
+          </select>
+        </div>
+      
+      </div>
+      
+
+
+    <div class="ms-auto d-flex flex-row-reverse pt-2 my-3">
+        <button type="button" class="btn btncreate mx-2" type="submit"  (click)="addData()">Apply</button>
+        <div class="p-2" (click)="printPDF()">
+            <i class="fas fa-print" style="cursor: pointer;"></i>
+          </div>   
+    </div>   
+
+
+    <!-- Hidden PDF Header -->
+<!-- Hidden Header for PDF -->
+<div id="pdfHeader" class="only-pdf" style="display: none;">
+    <div class="d-flex justify-content-between align-items-center px-3 py-2 mt-5 ">
+      <!-- Logo + Name -->
+      <div class="person ms-3 h-25 d-flex">
+        <img src="assets/images/img_avatar1.png" alt="Avatar Logo" style="width: 30px;">
+        <div>
+          <h2 class="m-0 person1">Eduverse</h2>
+          <p class="m-0 h6 person1">Online School</p>
+        </div>
+      </div>
+  
+      <!-- Title -->
+      <div>
+        <h1 class="text-center m-0">Student's Grade Book</h1>
+      </div>
+  
+      <!-- Time -->
+      <div>
+        <p id="pdfTime" class="m-0"></p>
+      </div>
+    </div>
+    <div class="my-4 px-3 ps-3">
+        <div class="my-4 px-3 ps-3">
+            <span><strong>Student Id:</strong>&nbsp;&nbsp;&nbsp; 10033196&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span><strong>Student Name:</strong>&nbsp;&nbsp;&nbsp; {{ selectedData?.selectedStudent }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+            
+            
+        </div>
+        <div class="my-4 px-3 ps-3">
+            <span><strong>School:</strong> &nbsp;&nbsp;&nbsp;{{ selectedData?.selectedSchool }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span><strong>Grade:</strong>&nbsp;&nbsp;&nbsp;Grade 12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span><strong>Academic Year:</strong> &nbsp;&nbsp;&nbsp;{{ selectedData?.selectedAcademicYear }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            
+         </div></div>
+  </div>
+  
+  
+  <div id="pdfContent" class="px-3">
+   
+    <div class="table-responsive">
+      <table class="table table-bordered text-center align-middle" style="border-collapse: collapse; width: 100%;" border="1">
+        <thead class="">
+          <tr>
+            <th style="border: 1px solid black;">Subject</th>
+            <th style="border: 1px solid black;">Exams</th>
+            <th style="border: 1px solid black;">Quizzes</th>
+            <th style="border: 1px solid black;">Attendance</th>
+            <th style="border: 1px solid black;">Homework</th>
+            <th style="border: 1px solid black;">Classwork</th>
+            <th style="border: 1px solid black;">Total</th>
+            <th style="border: 1px solid black;">Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mark of marks">
+            <td style="border: 1px solid black;">{{ mark.subject }}</td>
+            <td style="border: 1px solid black;">{{ mark.exams }}</td>
+            <td style="border: 1px solid black;">{{ mark.quizzes }}</td>
+            <td style="border: 1px solid black;">{{ mark.attendance }}</td>
+            <td style="border: 1px solid black;">{{ mark.homework }}</td>
+            <td style="border: 1px solid black;">{{ mark.classwork }}</td>
+            <td style="border: 1px solid black;">{{ mark.total }}</td>
+            <td style="border: 1px solid black;">{{ mark.percentage }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  </div>

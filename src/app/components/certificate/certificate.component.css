@@ -1,0 +1,25 @@
+.btncreate{
+    
+    background-color: orange;
+    color:white;
+}.btncreate:hover{
+    color: #000;
+}
+table{
+    border: 3px;
+}.person1{
+    color: #557fea;
+}
+/* Hide it by default on screen */
+.only-pdf {
+    display: none;
+  }
+  
+  @media print {
+    .only-pdf {
+      display: block !important;
+    }
+  }
+  
+  
+  
